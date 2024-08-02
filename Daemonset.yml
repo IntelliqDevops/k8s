@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: httpd-dameon
+  labels:
+    type: webserver
+spec:
+  selector:
+    matchLabels:
+      type: webserver
+  template:
+    metadata:
+      name: httpd-pod
+      labels:
+        type: webserver
+    spec:
+      containers:
+        - name: myhttpd
+          image: httpd
+          ports:
+            - containerPort: 80
+              hostPort: 9090
+...
+
+
+
+
