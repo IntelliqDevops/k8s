@@ -21,12 +21,22 @@ spec:
           image: postgres
           env:
             - name: POSTGRES_PASSWORD
-              value: intelliqit
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
             - name: POSTGRES_USER
-              value: myuser
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
             - name: POSTGRES_DB
-              value: mydb
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: dbname
 ...
+
 
 
 

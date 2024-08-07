@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: mywordpress
-  name: mywordpress
+    io.kompose.service: redis-app
+  name: redis-app
 spec:
   ports:
-  - name: "8080"
-    port: 8080
-    targetPort: 80
+  - name: "6379"
+    port: 6379
+    targetPort: 6379
   selector:
-    io.kompose.service: mywordpress
+    io.kompose.service: redis-app
 status:
   loadBalancer: {}

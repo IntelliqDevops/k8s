@@ -6,22 +6,20 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: mywordpress
-  name: mywordpress
+    io.kompose.service: worker-app
+  name: worker-app
 spec:
-  replicas: 3
+  replicas: 1
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: mywordpress
+        io.kompose.service: worker-app
     spec:
       containers:
-      - image: wordpress
-        name: mywordpress
-        ports:
-        - containerPort: 80
+      - image: dockersamples/examplevotingapp_worker
+        name: worker-app
         resources: {}
       restartPolicy: Always
 status: {}

@@ -6,23 +6,29 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: mydb
-  name: mydb
+    io.kompose.service: postgres-app
+  name: postgres-app
 spec:
-  replicas: 2
+  replicas: 1
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: mydb
+        io.kompose.service: postgres-app
     spec:
       containers:
       - env:
-        - name: MYSQL_ROOT_PASSWORD
+        - name: POSTGRES_DB
+          value: mydb
+        - name: POSTGRES_PASSWORD
           value: intelliqit
-        image: mysql
-        name: mydb
+        - name: POSTGRES_USER
+          value: myuser
+        image: postgres
+        name: postgres-app
+        ports:
+        - containerPort: 5432
         resources: {}
       restartPolicy: Always
 status: {}

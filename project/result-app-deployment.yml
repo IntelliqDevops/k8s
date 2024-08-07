@@ -16,7 +16,7 @@ spec:
      name: result-app-pod
      labels:
        name: result-app
-  spec:
+   spec:
     containers:
       - name: result-app
         image: dockersamples/examplevotingapp_result
