@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+  labels:
+    type: appserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: appserver
+  template:
+    metadata:
+      name: tomcat-pod
+      labels:
+        type: appserver
+    spec:
+      containers:
+        - name: tomcat
+          image: tomee
+      tolerations:
+        - key: slave3
+          value: intelliqit3
+          operator: Equal
+          effect: NoSchedule
+...
+      
+      
+      
+      
+    
+    
+    
+    

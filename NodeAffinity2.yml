@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+  labels:
+    type: webserver
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: webserver
+  template:
+    metadata:
+      name: httpd-pod
+      labels:
+        type: webserver
+    spec:
+      containers:
+        - name: myhttpd
+          image: httpd
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: slave1
+                    operator: In
+                    values:
+                      - intelliqit1
+...
