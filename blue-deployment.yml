@@ -2,14 +2,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx-deployment-blue
   labels:
     type: proxy
     author: intelliqit
 spec:
-  replicas: 2
-  strategy:
-    type: Recreate
+  replicas: 3
   selector:
     matchLabels:
       type: proxy
